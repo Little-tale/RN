@@ -5,14 +5,27 @@
  * @format
  */
 
+// 해당 파일에서만 안쓰는 에러 제거할께요.
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, Button } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Button,
+  Image,
+} from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 // MARK: subView Import
 import Header from './src/header';
 import Generator from './src/generator';
 import NumList from './src/numList';
 import Input from './src/input';
+import PickerComponent from './src/picker';
+import ModalComponent from './src/modal';
+// import { Images } from './componnent/images';
 
 /*
 style={{ // 인라인 스타일을 쓰면 경고가 나옴 -> 비추한다함
@@ -21,6 +34,7 @@ style={{ // 인라인 스타일을 쓰면 경고가 나옴 -> 비추한다함
             padding: 30,
           }}
 */
+
 function App() {
   type State = {
     appName: string;
@@ -83,42 +97,9 @@ function App() {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={appStyles.mainView}>
-        <View style={appStyles.subView}>
-          <Text style={appStyles.mainText}>Hello World</Text>
+        <View>
+          <ModalComponent />
         </View>
-        {/* <View style={appStyles.subView}>
-          <Text>Hello World</Text>
-        </View>
-        <View style={appStyles.subView2}>
-          <Text style={appStyles.mainText}>Hello World</Text>
-        </View> */}
-        <Header name={state.appName} />
-        <Input
-          textInput={state.textInput}
-          onChangeTextInput={onChangeTextInput}
-        />
-        <Button
-          title="Add Number"
-          onPress={() => {
-            addTextNumber(state.textInput);
-            resetTextInput();
-          }}
-        />
-        <Generator onPress={tapAddNumber} />
-        <ScrollView
-          style={appStyles.scrollView}
-          // onMomentumScrollBegin={}
-          // onMomentumScrollEnd={}
-          // onScroll={}
-          // onContentSizeChange={(width, height)}
-          // bounces={false}
-        >
-          <NumList
-            randomNumbers={state.randomNumbers}
-            onPressItem={tapDeleteNumber}
-          />
-        </ScrollView>
-        {/* <Text>SSSSS</Text> */}
       </SafeAreaView>
     </SafeAreaProvider>
   );
@@ -153,6 +134,58 @@ const appStyles = StyleSheet.create({
   scrollView: {
     width: '100%',
   },
+  rockImageStyle: {
+    width: 100,
+    height: 100,
+  },
 });
 
 export default App;
+
+// <SafeAreaProvider>
+//   <SafeAreaView style={appStyles.mainView}>
+//     <PickerComponent />
+//     <Image
+//       style={appStyles.rockImageStyle}
+//       // source={Images.RockImage}
+//       source={{ uri: 'https://picsum.photos/200/300' }}
+//       resizeMode="contain"
+//     />
+//     <View style={appStyles.subView}>
+//       <Text style={appStyles.mainText}>Hello World</Text>
+//     </View>
+//     {/* <View style={appStyles.subView}>
+//       <Text>Hello World</Text>
+//     </View>
+//     <View style={appStyles.subView2}>
+//       <Text style={appStyles.mainText}>Hello World</Text>
+//     </View> */}
+//     <Header name={state.appName} />
+//     <Input
+//       textInput={state.textInput}
+//       onChangeTextInput={onChangeTextInput}
+//     />
+//     <Button
+//       title="Add Number"
+//       onPress={() => {
+//         addTextNumber(state.textInput);
+//         resetTextInput();
+//       }}
+//     />
+//     <Generator onPress={tapAddNumber} />
+//     <ScrollView
+//       style={appStyles.scrollView}
+//       // onMomentumScrollBegin={}
+//       // onMomentumScrollEnd={}
+//       // onScroll={}
+//       // onContentSizeChange={(width, height)}
+//       // bounces={false}
+//     >
+//       <NumList
+//         randomNumbers={state.randomNumbers}
+//         onPressItem={tapDeleteNumber}
+//       />
+//     </ScrollView>
+//     {/* <Text>SSSSS</Text> */}
+//   </SafeAreaView>
+// </SafeAreaProvider>
