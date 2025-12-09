@@ -1,6 +1,6 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Text, View, Button } from 'react-native';
-import { RootStackParamList } from '../App';
+import { RootStackParamList } from './Drawers/Nav/StackNavigator';
 
 type UserScreenProps = NativeStackScreenProps<RootStackParamList, 'User'>;
 
