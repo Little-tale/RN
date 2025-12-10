@@ -8,13 +8,14 @@
 
 import { NavigationContainer } from '@react-navigation/native';
 // import DrawerNavigator from './src/Drawers/DrawerNavigator';
-import TabNavigator from './src/Drawers/Tab/tab_navigator';
+// import TabNavigator from './src/Drawers/Tab/tab_navigator';
+import { StackNavigator } from './src/Drawers/Nav/StackNavigator';
 // import { StackNavigator } from './src/Drawers/Nav/StackNavigator';
 
 function App() {
   return (
     <NavigationContainer>
-      <TabNavigator />
+      <StackNavigator/>
       {/* <DrawerNavigator /> */}
     </NavigationContainer>
   );
